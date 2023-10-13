@@ -1,0 +1,65 @@
+<div class="container mt-4">
+   <div class="d-flex align-items-center individual-comment">
+        <img src="/images/InstaRadLogo.png" class="brand-logo" style="margin-right: 10px;">
+        <h1 class="brand-font nav-bar-brand">InstaRad</h1>
+    </div>
+    <div class="row">
+        <!-- Left column for the image -->
+        <div class="col-md-6">
+            <img src="{{post.image}}" class="img-fluid post-image">
+        </div>
+        <!-- Right column for post details -->
+        <div class="col-md-6">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- User information -->
+                <div class="d-flex align-items-center comment-header">
+                    <a href="/posts/user/{{post.creator._id}}">
+                        <img src="{{post.creator.image}}" class="small-profile-pic rounded-circle" style="margin-right: 10px;">
+                    </a>
+                    <p class="mb-0"><strong>{{post.creator.userName}}</strong></p>
+                </div>
+                <!-- Delete button -->
+                <div class="ml-auto">
+                    {{{deleteIcon post loggedUser post._id}}}
+                </div>
+            </div>
+            <hr>
+            <div class="comment-box">
+                <!-- Caption -->
+                <div class="d-flex align-items-center individual-comment">
+                    <img src="{{post.creator.image}}" class="small-profile-pic rounded-circle" style="margin-right: 10px;">
+                    <p class="mb-0"><strong>{{post.creator.userName}}</strong> {{post.caption}}</p>
+                </div>
+                <!-- Comments -->
+                {{#each comments}}
+                <div class="d-flex align-items-center" style="margin-bottom: 10px;">
+                    <img src="{{this.commentor.image}}" class="small-profile-pic rounded-circle" style="margin-right: 10px;">
+                    <p class="mb-0"><strong>{{this.commentor.userName}}</strong> {{this.comment}}</p>
+                </div>
+                {{/each}}
+            </div>
+            <hr>
+            <!-- Like button, likes count, and timestamp -->
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <form action="/posts/likePost/{{post._id}}" method="POST">
+                        <input type="hidden" name="_method" value="PUT">
+                        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                            <i class="fas fa-heart fa-lg" style="margin-right: 10px;"></i>
+                        </button>
+                    </form>
+                    <p class="ml-2 mb-0">{{post.likes}} likes</p>
+                </div>
+                <span id="date-title">{{formatDate post.createdAt 'DD/MM/YYYY hh:mma'}}</span>
+            </div>
+            <!-- Comment input -->
+            <form action="/comments" method="POST">
+                <input type="hidden" name="postId" value="{{post._id}}">
+                <div class="form-group comment-textbox">
+                    <textarea id="comment" name="comment" class="form-control" placeholder="Add a comment..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-link text-primary" style="text-decoration: none;">Post</button>
+            </form>
+        </div>
+    </div>
+</div>

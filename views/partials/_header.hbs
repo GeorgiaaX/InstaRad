@@ -1,0 +1,47 @@
+<!-- Navigation header for all authenticated pages -->
+<!-- Side Nav -->
+<div class="d-none d-md-block sidebar">
+    <h1 class="brand-font nav-bar-brand">InstaRad</h1>
+    <a class="nav-link" href="/feed"><i class="fas fa-home fas-link fa-lg"></i> Home</a>
+    <a href="#myModal" class="nav-link" data-bs-toggle="modal"><i class="fas fa-plus fas-link fa-lg"></i> Create</a>
+    <a class="nav-link" href="/profile"><i class="fas fa-user fas-link fa-lg"></i> Profile</a>
+    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt fas-link fa-lg"></i> Logout</a>
+</div>
+
+{{!-- Mobile nav bar --}}
+<nav class="navbar fixed-bottom bg-light d-md-none">
+    <div class="container-fluid">
+        <a class="nav-link" href="/feed"><i class="fas fa-home fas-link fa-lg"></i></a>
+        <a href="#myModal" class="nav-link" data-bs-toggle="modal"><i class="fas fa-plus fas-link fa-lg"></i></a>
+        <a class="nav-link" href="/profile"><i class="fas fa-user fas-link fa-lg"></i></a>
+        <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt fas-link fa-lg"></i></a>
+    </div>
+</nav>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create new post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="/posts/createPost" enctype="multipart/form-data" method="POST">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="caption" class="form-label">Add a caption</label>
+                        <textarea class="form-control" id="caption" name="caption" maxlength="500"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageUpload" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="imageUpload" name="file">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Post</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

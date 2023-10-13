@@ -1,0 +1,71 @@
+{{!-- display posts --}}
+
+
+<div class="container">
+    <div class="d-flex align-items-center individual-comment">
+        <img src="/images/InstaRadLogo.png"  class="brand-logo" style="margin-right: 10px;">
+        <h1 class="brand-font nav-bar-brand">InstaRad</h1>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <!-- Feed Section -->
+            <div>
+                {{#each posts}}
+    {{!-- loop through each post and display--}}
+        <div class="card post-card data-post-id="{{_id}}"">
+            <div class="d-flex align-items-center comment-header" style = "margin-bottom: 10px;">
+              <a href = "/posts/user/{{creator._id}}">
+              <img src="{{creator.image}}" class="small-profile-pic rounded-circle" style="margin-right: 10px;">
+              </a>
+              <p class="mb-0"><strong>{{creator.userName}}</strong></p>
+            </div>
+            <a href = "/posts/{{_id}}">
+            <div class="card-img-container">
+                <img class="card-img-top postImages" src="{{image}}" alt="Card image cap">
+            </div>
+            </a>
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+              <form action="/posts/likePost/{{_id}}" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                  <i class="fas fa-heart fa-lg"  style="margin-right: 10px;"></i>
+                </button>
+              </form>
+            </div>
+                <p class="card-text card-caption"><strong>{{creator.userName}}</strong> {{caption}}</p>
+                <div class = "d-flex justify-content-between">
+                    <a href = "/posts/{{_id}}" class = "view-comments-link">View comments...</a>
+                    <span id="date-title">{{formatDate createdAt 'MM/DD/YYYY hh:mma'}}</span>
+                 </div>
+                <hr>
+            </div>
+        </div>
+                {{/each}}
+            </div>
+        </div>
+
+       <div class="col-md-4 d-none d-md-block">
+            <!-- Sidebar/Profiles Section -->
+            <div class="profiles-sidebar">
+                {{#each users}}
+                <!-- Profile card or element for each profile goes here -->
+                <div class="d-flex align-items-center profile-card" style="margin-bottom: 10px;">
+                    <a href="/posts/user/{{_id}}">
+                        <img src="{{image}}" class="med-profile-pic rounded-circle" style="margin-right: 10px;">
+                    </a>
+                    <p class="mb-0"><strong>{{userName}}</strong></p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

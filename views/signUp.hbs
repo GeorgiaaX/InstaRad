@@ -1,0 +1,59 @@
+{{!-- Sign Up Form --}}
+<div class="container login-container">
+    <div class="row justify-content-center align-items-center">
+        <!-- Hide the image on smaller screens -->
+        <div class="col-md-7 d-none d-md-block">
+            <img src="/images/phoneImg.jpg" class="img-fluid" alt="Phone Image">
+        </div>
+        <div class="col-12 col-md-5 mb-4">
+            <div class="container text-center login-form-container">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title brand-font">InstaRad</h1>
+                        {{#if validationErrors}}
+                        <!-- Display validation errors -->
+                        <div class="alert alert-danger">
+                            <ul>
+                                {{#each validationErrors}}
+                                <li class="list-unstyled">{{this.msg}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        {{/if}}
+                        <div class="card-body">
+                            <form action="/signUp" method="POST" enctype="multipart/form-data">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" id="userName" name="userName" placeholder="Username" required>
+                                    <label for="userName">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="email" id="email" name="email" placeholder="Email" required>
+                                    <label for "email">Email</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="password" id="password" name="password" placeholder="Password" required>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                                    <label for="confirmPassword">Confirm</label>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imageUpload" class="form-label">Profile Picture</label>
+                                    <input type="file" class="form-control" id="imageUpload" name="file">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                            </form>
+                        </div>
+                        <span>Already have an account? <a href="/" class="text-decoration-none">Login</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
