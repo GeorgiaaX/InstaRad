@@ -257,9 +257,10 @@ body {
     }
 
     .login-form-container {
-        width: 100%;
+        width: 80%;
         max-width: 300px; /* Adjust to your preference */
         padding: 20px;
+        margin: 0;
     }
 
     .card-title {
