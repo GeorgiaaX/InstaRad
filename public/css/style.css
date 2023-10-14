@@ -236,6 +236,9 @@ body {
     .post-tile {
         height: 160px;
     }
+     .col-md-7 {
+        display: none;
+    }
 }
 
 /* Media query for smaller screens (e.g., mobile) */
