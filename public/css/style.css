@@ -257,15 +257,15 @@ body {
     }
 
     .login-form-container {
-        width: 80%;
-        max-width: 200px; /* Adjust to your preference */
-        padding: 20px;
+        width: 5%;
+        max-width: 10px !important; /* Adjust to your preference */
+        padding: 0px;
         margin: 0;
     }
 
-    .card-title {
+    /* .card-title {
         font-size: 1.5rem;
-    }
+    } */
 
     .post-tile {
         height: 300px; /* Set your desired height */
