@@ -160,12 +160,12 @@ body {
 
 
 /* Custom CSS */
-.card {
-    width: 30rem; /* Set a fixed width for the card */
-    margin-bottom: 20px; /* Add some spacing between cards */
-    background-color: white; /* Set the background color to white */
+/* .card {
+    width: 30rem; 
+    margin-bottom: 20px;
+    background-color: white; 
     border: none !important;
-}
+} */
 
 .card-img-container {
     height: 400px; /* Set a fixed height for the image container */
