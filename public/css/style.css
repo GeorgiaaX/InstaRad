@@ -238,20 +238,32 @@ body {
     }
 }
 
+/* Media query for smaller screens (e.g., mobile) */
 @media (max-width: 767px) {
-    .post-tile {
-        height: 300px !important;
+    /* Hide the image column on mobile */
+    .col-md-7 {
+        display: none;
+    }
+
+    /* Center the login form on mobile */
+    .login-container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 
     .login-form-container {
-        width: 100%; /* Adjust to your preference */
-        max-width: 200px !important; /* Add max-width to limit form size */
+        width: 100%;
+        max-width: 300px; /* Adjust to your preference */
         padding: 20px;
-        margin-left: 0 !important;
     }
-    
+
     .card-title {
-        font-size: 1.5rem; 
+        font-size: 1.5rem;
+    }
+
+    .post-tile {
+        height: 300px; /* Set your desired height */
     }
 }
-
