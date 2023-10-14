@@ -160,12 +160,11 @@ body {
 
 
 /* Custom CSS */
-/* .card {
-    width: 30rem; 
+.card { 
     margin-bottom: 20px;
     background-color: white; 
     border: none !important;
-} */
+}
 
 .card-img-container {
     height: 400px; /* Set a fixed height for the image container */
