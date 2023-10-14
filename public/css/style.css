@@ -244,8 +244,9 @@ body {
     }
 
     .login-form-container {
-        width: 400px;
-        padding: 20px; 
+        width: 100%; /* Adjust to your preference */
+        max-width: 200px; /* Add max-width to limit form size */
+        padding: 20px;
     }
     
     .card-title {
