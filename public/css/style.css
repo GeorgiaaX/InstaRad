@@ -250,14 +250,15 @@ body {
 
     /* Center the login form on mobile */
     .login-container {
-        position: relative;
+        position: absolute;
         top: auto;
         left: auto;
         transform: none;
     }
 
     .login-form-container {
-        max-width: 600px !important; /* Adjust to your preference */
+        width: 80%;
+        max-width: 700px !important; /* Adjust to your preference */
         padding: 0px;
         margin: 0;
     }
