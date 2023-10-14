@@ -240,13 +240,14 @@ body {
 
 @media (max-width: 767px) {
     .post-tile {
-        height: 300px;
+        height: 300px !important;
     }
 
     .login-form-container {
         width: 100%; /* Adjust to your preference */
         max-width: 200px !important; /* Add max-width to limit form size */
         padding: 20px;
+        margin-left: 0 !important;
     }
     
     .card-title {
