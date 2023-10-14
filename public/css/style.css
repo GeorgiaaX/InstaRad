@@ -244,6 +244,7 @@ body {
     }
 
     .login-form-container {
+        width: 400px;
         padding: 20px; 
     }
     
