@@ -257,7 +257,6 @@ body {
     }
 
     .login-form-container {
-        width: 5%;
         max-width: 10px !important; /* Adjust to your preference */
         padding: 0px;
         margin: 0;
