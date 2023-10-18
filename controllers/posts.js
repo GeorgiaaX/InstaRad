@@ -10,19 +10,22 @@ const validator = require('validator') //validation library
 
 
 module.exports = {
+    //get profile page
     getProfile: async (req, res) => {
         try {
-
+            //find user by Id
             const user = await User.findById({ _id: req.user.id })
+            //find posts by user
             const posts = await Post.find(
                 {
                     creator: req.user.id
                 })
                 .lean()
 
-
+                //count posts
             const countPosts = posts.length
-    
+                
+            //render profile
             res.render("profile", 
             {
                 posts,
@@ -37,6 +40,7 @@ module.exports = {
             console.error(err)
         }
     }, 
+    //create new post
     createPost: async (req, res) => {
         // Store validation errors in an array
         const validationErrors = [];
@@ -55,9 +59,11 @@ module.exports = {
             // Pass validationErrors to the template
             return res.redirect('/feed');
         }
-    
+        
         try {
+            //store cloudinary URL
             const result = await cloudinary.uploader.upload(req.file.path);
+            //create new post
             await Post.create({
                 title: req.body.title,
                 image: result.secure_url,
@@ -65,25 +71,26 @@ module.exports = {
                 caption: req.body.caption,
                 creator: req.user.id
             });
+            //redirect to feed
             res.redirect('/feed');
         } catch (err) {
             console.error(err);
         }
     },
+    //get all feed posts
     getFeedPosts: async (req, res) => {
         try {
-
             // Fetch 10 random users
         const randomUsers = await User.aggregate([
             { $sample: { size: 10 } } // Get 10 random users
         ]);
-
-    
+            //find all posts
             const posts = await Post.find()
             .populate('creator')
+            //sort descending
             .sort({createdAt: 'desc'})
             .lean()
-
+            //render feed
             res.render('feed', {
                 posts,
                 users: randomUsers,
@@ -92,6 +99,7 @@ module.exports = {
             console.error(err)
         }
     },
+    //delete posts
     deletePost: async (req, res) => {
         try {
             //find post by Id and delete
@@ -100,16 +108,18 @@ module.exports = {
             //delete from cloudinary
             await cloudinary.uploader.destroy(post.cloudinaryId)
             console.log("deleted post")
+            //redirect to user profile
             res.redirect('/profile')
         } catch (err) {
             console.error(err)
         }
     },
+    //get single post
     getPost: async (req, res) => {
         try {
             // Find comments associated with the specified post ID and populate 'commentor'
             const loggedUser = req.user
-
+            //find all comments on post
             const comments = await Comments.find({ postId: req.params.id })
                 .populate('commentor')
                 .lean();
@@ -124,19 +134,24 @@ module.exports = {
             console.error(err);
         }
     },
+    //like a post
     likePost: async (req, res) => {
        try {
+            //find the post id and update likes
             await Post.findOneAndUpdate({ _id: req.params.id }, 
                 {
+                    //increment likes by 1
                     $inc: { likes: 1},
                 }
             )
             console.log("likes + 1")
+            //redirect to post
             res.redirect(`/posts/${req.params.id}`);
        } catch(err) {
             console.error(err)
        }
     },
+    //get User profile
     getUserProfile: async(req,res) => {
         try {
             // Find the user by their user ID (from the route parameter)
@@ -146,17 +161,16 @@ module.exports = {
                 // Handle the case where the user with the specified ID is not found
                 return res.status(404);
             }
-
+            //find all user posts
             const posts = await Post.find({
                 creator : req.params.userId, // User ID is obtained from the route parameter
             })
+            //sort by descending order
             .sort({ createdAt: 'desc' }) 
             .lean(); 
-
+            //count number of posts
             const countPosts = posts.length
-            
-            console.log(user)
-                console.log(posts)
+            //render the user profile page
             res.render('userProfile', {
                 profileId: req.params.userId,
                 userName: user.userName,

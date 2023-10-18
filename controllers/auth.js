@@ -4,17 +4,7 @@ const cloudinary = require("../middleware/cloudinary"); //require cloudinary
 const passport = require("passport");
 
 module.exports = {
-    getLogin: (req, res) => {
-        if(req.user) {
-            return res.redirect('/feed')
-        }
-        res.render(
-            'login',
-            {
-                layout: 'landing' //change layout
-            }
-        )
-    },
+    //post login form
     postLogin: async (req, res, next) => {
         //store Validation messages in an array
         const validationErrors = [];
@@ -31,7 +21,7 @@ module.exports = {
               return next(err);
             }
             if (!user) {
-                //push eerror message to validation array
+                //push error message to validation array
                 validationErrors.push({ msg: 'Invalid Username or Password'})
 
                 //Render the login template with validation errors
@@ -46,14 +36,18 @@ module.exports = {
               if (err) {
                 return next(err);
               }
+              //redirect to feed
               res.redirect(req.session.returnTo || "/feed");
             });
           })(req, res, next);
     },
+    //get the signin page
     getSignUp: (req, res) => {
+        //if user is logged in, redirect to feed
         if(req.user) {
             return res.redirect('/feed')
         }
+        //render signup page
         res.render(
             'signUp',
             {
@@ -61,6 +55,7 @@ module.exports = {
             }
         )
     },
+    //post sign up form
     postSignUp: async (req, res, next) => {
         // Store validation errors in an array
         const validationErrors = [];
@@ -118,8 +113,9 @@ module.exports = {
             // Log in the user
             req.logIn(user, (err) => {
                 if (err) {
-                    throw err; // Throw the error to be caught by the catch block
+                    throw err; 
                 }
+                //redirct to the feed
                 res.redirect('/feed');
             });
         } catch (err) {
@@ -127,6 +123,7 @@ module.exports = {
             return next(err);
         }
     },
+    //log user out and destroy session
     getLogout: (req, res, next) => {
         //call the logout method provided by passport.js to logout the user
         req.logout((err) => {

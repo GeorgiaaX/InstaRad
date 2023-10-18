@@ -4,7 +4,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const exphbs = require('express-handlebars'); // handlebars
 const methodOverride = require('method-override');
-const passport = require('passport');
+const passport = require('passport'); //passport for user auth
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const connectDB = require('./config/db'); //database connection
@@ -24,6 +24,7 @@ const app = express()
 //connect to database
 connectDB()
 
+//helpers
 const { formatDate, deleteIcon} = require('./helpers/hbs')
 
 //Set up handlebars templating engine

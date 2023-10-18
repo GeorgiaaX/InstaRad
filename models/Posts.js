@@ -23,6 +23,7 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    //define creation date
     createdAt: {
         type: Date,
         default: Date.now, // set date to current date

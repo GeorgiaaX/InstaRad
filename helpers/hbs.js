@@ -6,6 +6,7 @@ module.exports = {
     formatDate: function (date, format) {
         return moment(date).format(format)
     },
+    //function to format delete icon for user
     deleteIcon: function (post, loggedUser, postId) {
         if (post && loggedUser && post.creator && loggedUser._id) {
           if (post.creator._id.toString() === loggedUser._id.toString()) {
