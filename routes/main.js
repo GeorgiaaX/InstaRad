@@ -10,19 +10,19 @@ const { ensureGuest, ensureAuth } = require('../middleware/auth') //middleware f
 
 //@desc display Login page as landing Page
 //@router GET /
-router.get("/", homeController.getLogin);
+router.get("/", ensureGuest, homeController.getLogin);
 
 //@desc login existing user with Login Page
 //@router POST /login
-router.post("/login", authController.postLogin)
+router.post("/login", ensureGuest, authController.postLogin)
 
 //@desc display SignUp Page
 //@Router GET /signUp
-router.get("/signUp", authController.getSignUp)
+router.get("/signUp", ensureGuest, authController.getSignUp)
 
 //@desc Create new user with signup
 //@Router POST /signup
-router.post("/signUp", upload.single("file"), authController.postSignUp)
+router.post("/signUp", ensureGuest, upload.single("file"), authController.postSignUp)
 
 //@desc display profile page
 //@Router GET /profile
@@ -34,6 +34,6 @@ router.get('/logout', authController.getLogout)
 
 //@desc display the feed
 //@Router /feed
-router.get('/feed', postsController.getFeedPosts)
+router.get('/feed', ensureAuth, postsController.getFeedPosts)
 
 module.exports = router;
