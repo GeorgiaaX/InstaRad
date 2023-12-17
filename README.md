@@ -3,7 +3,7 @@
 ## About the Project
 The InstaRad project is an industry Instagram clone web application created for use by radiography health professionals to share interesting x-rays and scans. Users can create an instaRad account and interact with other users by creating new image posts to share, liking interesting posts, and leaving comments for other users to interact with. Posts are displayed in an infinite scroll feed, that sorts posts chronologically by creation date. To activate an instaRad account, users must sign up and log in to interact and engage with other users of the platform.
 
-Link to project: https://https://instarad.cyclic.app/
+Link to project: https://instarad.cyclic.app/
 
 ## How it's made 
 Tech used: HTML, CSS, Node.js, Express.js, MongoDB, Mongoose, Bootstrap, Passport.js, Handlebars.js.
