@@ -44,7 +44,7 @@
                     <form action="/posts/likePost/{{post._id}}" method="POST">
                         <input type="hidden" name="_method" value="PUT">
                         <button type="submit" class="like-button" style="background: none; border: none; padding: 0; cursor: pointer;">
-                            <i class="fa fa-heart fa-lg" style="margin-right: 10px;">Like</i>
+                            <i class="fa fa-heart fa-lg" style="margin-right: 10px;"></i>
                         </button>
                     </form>
                     <p class="ml-2 mb-0 likes-count">{{post.likes}} likes</p>
@@ -57,7 +57,7 @@
                 <div class="form-group comment-textbox">
                     <textarea id="comment" name="comment" class="form-control" placeholder="Add a comment..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-link text-primary" style="text-decoration: none;">Post</button>
+                <button type="submit" class="btn btn-link text-primary" style="text-decoration: none;" disabled >Post</button>
                 <div style = "height: 50px;"></div>
             </form>
         </div>
